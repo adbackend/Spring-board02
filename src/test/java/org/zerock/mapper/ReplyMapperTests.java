@@ -22,29 +22,29 @@ public class ReplyMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private ReplyMapper mapper ;
 	
-	private Long[] bnoArr = {30807L, 30806L, 30804L, 30799L, 30795L};
+	private Long[] bnoArr = {786444L, 786443L, 786441L, 786431L, 786430L};
 	
 //	@Test
 //	public void testMapper() {
 //		log.info(mapper);
 //	}
 	
-//	//댓글 작성
-//	@Test
-//	public void tesetCreate() {
-//		
-//		IntStream.rangeClosed(1, 10).forEach(i->{
-//			
-//			ReplyVO vo = new ReplyVO();
-//			
-//			vo.setBno(bnoArr[i%5]);
-//			vo.setReply("댓글테스트"+i);
-//			vo.setReplyer("replyer"+i);
-//			
-//			mapper.insert(vo);
-//			
-//		});
-//	}
+	//댓글 작성
+	@Test
+	public void tesetCreate() {
+		
+		IntStream.rangeClosed(1, 10).forEach(i->{
+			
+			ReplyVO vo = new ReplyVO();
+			
+			vo.setBno(bnoArr[i%5]);
+			vo.setReply("댓글테스트"+i);
+			vo.setReplyer("replyer"+i);
+			
+			mapper.insert(vo);
+			
+		});
+	}
 	
 //	//특정댓글 조회
 //	@Test
@@ -82,15 +82,15 @@ public class ReplyMapperTests {
 //		
 //	}
 	
-	@Test
-	public void testList() {
-		
-		Criteria cri = new Criteria();
-		
-		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
-		
-		replies.forEach(reply -> log.info(reply));
-	}
+//	@Test
+//	public void testList() {
+//		
+//		Criteria cri = new Criteria();
+//		
+//		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
+//		
+//		replies.forEach(reply -> log.info(reply));
+//	}
 	
 	
 
