@@ -23,5 +23,5 @@ public interface BoardMapper {
 	public int update(BoardVO board);
 	
 	public int getTotalCount(Criteria cri); //전체 데이터 개수
-
+	
 }
