@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyVO;
@@ -72,6 +73,32 @@ public class ReplyController {
 	}
 	
 	//댓글삭제
-//	@DeleteMapping(value = "{rno}", produces = {})
+	@DeleteMapping(value = "/{rno}", produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> remove(@PathVariable("rno") Long rno){
+		
+		log.info("댓글삭제....."+ rno);
+		
+		return replyService.remove(rno) == 1
+				? new ResponseEntity<>("success", HttpStatus.OK)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	//댓글수정
+	@RequestMapping(value = "/{rno}",
+					method = {RequestMethod.PUT, RequestMethod.PATCH},
+					consumes = "application/json",
+					produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> modify(@RequestBody ReplyVO replyVO,
+										 @PathVariable("rno") Long rno){
+		
+		replyVO.setRno(rno);
+		log.info("rno......."+ rno);
+		log.info("modify");
+		
+		return replyService.modify(replyVO) == 1
+				? new ResponseEntity<>("success", HttpStatus.OK)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		
+	}
 	
 }

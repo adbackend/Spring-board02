@@ -49,16 +49,18 @@ public class BoardController {
 	}
 	
 	@GetMapping("/register")
-	public void register() {
+	public void register() { 
 		
 	}
 	
 	//글상세
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
-
-		log.info("register...... " + board);
-
+		
+//		log.info("register...... " + board);
+		
+		System.out.println(board.getContent());
+		
 		boardService.register(board);
 
 		//addAttribute는 값을 지속적으로 사용해야할때 addFlashAttribute는 일회성으로 사용해야할때 사용
@@ -80,9 +82,11 @@ public class BoardController {
 	@GetMapping({"/get","/modify"})
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 		
-		log.info("/get or modify..............................");
-		log.info("한페이지당 출력되는 데이터수.........."+ cri.getAmount());
-		log.info("현재페이지............"+ cri.getPageNum());
+//		log.info("/get or modify..............................");
+//		log.info("한페이지당 출력되는 데이터수.........."+ cri.getAmount());
+//		log.info("현재페이지............"+ cri.getPageNum());
+		
+		System.out.println();
 		
 		model.addAttribute("board",boardService.get(bno));
 		
