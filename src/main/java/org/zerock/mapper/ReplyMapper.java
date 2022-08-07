@@ -17,6 +17,7 @@ public interface ReplyMapper {
 	public int update(ReplyVO reply); //댓글수정
 	
 	public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri,
-										   @Param("bno") Long bno);
-
+										   @Param("bno") Long bno); //댓글 목록
+	
+	public int getCountByBno(Long bno); // 게시물 댓글수
 }

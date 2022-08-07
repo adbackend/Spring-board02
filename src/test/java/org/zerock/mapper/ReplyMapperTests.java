@@ -30,21 +30,21 @@ public class ReplyMapperTests {
 //	}
 	
 	//댓글 작성
-	@Test
-	public void tesetCreate() {
-		
-		IntStream.rangeClosed(1, 10).forEach(i->{
-			
-			ReplyVO vo = new ReplyVO();
-			
-			vo.setBno(bnoArr[i%5]);
-			vo.setReply("댓글테스트"+i);
-			vo.setReplyer("replyer"+i);
-			
-			mapper.insert(vo);
-			
-		});
-	}
+//	@Test
+//	public void tesetCreate() {
+//		
+//		IntStream.rangeClosed(1, 10).forEach(i->{
+//			
+//			ReplyVO vo = new ReplyVO();
+//			
+//			vo.setBno(bnoArr[i%5]);
+//			vo.setReply("댓글테스트"+i);
+//			vo.setReplyer("replyer"+i);
+//			
+//			mapper.insert(vo);
+//			
+//		});
+//	}
 	
 //	//특정댓글 조회
 //	@Test
@@ -91,6 +91,15 @@ public class ReplyMapperTests {
 //		
 //		replies.forEach(reply -> log.info(reply));
 //	}
+	
+	@Test
+	public void testList2() {
+		Criteria cri = new Criteria(1,5);
+		
+		List<ReplyVO> replies = mapper.getListWithPaging(cri, 1L);
+		
+		replies.forEach(reply -> log.info(reply));
+	}
 	
 	
 
